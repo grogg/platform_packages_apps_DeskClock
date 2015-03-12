@@ -24,6 +24,7 @@ import android.content.res.Resources;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.SwitchPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -71,7 +72,7 @@ public class SettingsActivity extends PreferenceActivity
     private static CharSequence[][] mTimezones;
     private long mTime;
 
-    private CheckBoxPreference mAlarmIcon;
+    private SwitchPreference mAlarmIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +100,7 @@ public class SettingsActivity extends PreferenceActivity
         listPref.setSummary(listPref.getEntry());
         listPref.setOnPreferenceChangeListener(this);
 
-        mAlarmIcon = (CheckBoxPreference) findPreference(KEY_SHOW_STATUS_BAR_ICON);
+        mAlarmIcon = (SwitchPreference) findPreference(KEY_SHOW_STATUS_BAR_ICON);
         mAlarmIcon.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.SHOW_ALARM_ICON, 1) == 1);
     }
@@ -210,7 +211,7 @@ public class SettingsActivity extends PreferenceActivity
         listPref.setSummary(listPref.getEntry());
         listPref.setOnPreferenceChangeListener(this);
 
-        CheckBoxPreference hideStatusbarIcon = (CheckBoxPreference) findPreference(KEY_SHOW_STATUS_BAR_ICON);
+        SwitchPreference hideStatusbarIcon = (SwitchPreference) findPreference(KEY_SHOW_STATUS_BAR_ICON);
         hideStatusbarIcon.setOnPreferenceChangeListener(this);
 
         SnoozeLengthDialog snoozePref = (SnoozeLengthDialog) findPreference(KEY_ALARM_SNOOZE);
